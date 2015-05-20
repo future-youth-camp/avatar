@@ -12,4 +12,5 @@
 
 class Team < ActiveRecord::Base
 	has_many :backpack_contents
+	has_many :members
 end

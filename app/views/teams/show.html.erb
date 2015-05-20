@@ -1,5 +1,19 @@
-<h1><%= @team.name %> </h1>
+<h1><%= @team.name %></h1>
 
-<% @team.backpack_contents.each do |bc| %>
-  <%= bc.number %> &#215; <%= bc.item.name %>
+<h2>Medlemmar</h2>
+<% if @team.members.length != 0 %>
+	<% @team.members.each do |member| %>
+	  <%= member.name %>
+	<% end %>
+<% else %>
+  Inga medlemmar än
+<% end %>
+
+<h2>Ryggsäck</h2>
+<% if @team.members.length != 0 %>
+	<% @team.backpack_contents.each do |bc| %>
+	  <%= bc.number %> &#215; <%= bc.item.name %>
+	<% end %>
+<% else %>
+	Ryggsäcken är tom
 <% end %>
