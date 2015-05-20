@@ -6,7 +6,6 @@ class TeamsController < ApplicationController
 
   def show 
     @team = Team.find(team_id)
-    @resources = BackpackContent.where(team_id: @team.id)
   end
 
   private
