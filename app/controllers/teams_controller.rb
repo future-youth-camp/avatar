@@ -5,12 +5,7 @@ class TeamsController < ApplicationController
   end
 
   def show 
-    @team = Team.find(team_id)
+    @team = Team.find(params[:id])
   end
 
-  private
-
-  def team_id
-    params[:id]
-  end
 end
