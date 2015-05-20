@@ -1,5 +1,11 @@
-<ul>
-<% @teams.each do |team| %>
-	<li><%= link_to team.name, team %> </li>
+<h2>Alla lag</h2>
+
+<% if @teams.length != 0 %>
+	<ul>
+	<% @teams.each do |team| %>
+		<li><%= link_to team.name, team %> </li>
+	<% end %>
+	</ul>
+<% else %>
+	Inga lag än
 <% end %>
-</ul>
