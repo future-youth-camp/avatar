@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
   get 'teams/index'
+  
+  get 'teams/show'
 
   get 'backpack_content/index'
 

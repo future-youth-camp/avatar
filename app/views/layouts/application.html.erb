@@ -1,32 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Avatar</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+		<title>Avatar</title>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
 
-<div class="container">
-	<div class="header">
-		<nav class="navbar-left">
-			<a href="#">Laget</a>
-			<a href="#">Ryggsäck</a>
-		</nav>
-
-		<div class="navbar-right">
-			Lagets poäng: 9999
+		<div class="container">
+			<header class="header">
+				<h1>Logga här</h1>
+			</header>
+			<article class="main">
+				<%= yield %>
+			</article>
+			<footer class="footer">
+				<small>&copy; Future Youth Camp - 2015</small>
+			</footer>
 		</div>
-	</div>
-
-	<%= yield %>
-	
-
-	<div class="footer">
-		&copy; Future Youth Camp - 2015
-	</div>
-</div>
-
-</body>
+	</body>
 </html>

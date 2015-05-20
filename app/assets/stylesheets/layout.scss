@@ -1,0 +1,36 @@
+$bg-color: #D2DBDD;
+$doc-color: #EFEFEF;
+
+
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: $bg-color;
+}
+
+
+.container {
+  padding: 0.2em 1em;
+  max-width: 66em;
+  margin: 0 auto;	
+}
+
+.header,
+.footer,
+.main {
+  background-color: $doc-color;
+  padding: 3em;
+  margin-bottom: 2em;
+}
+.header,
+.footer {
+  text-align: center;
+}
+
