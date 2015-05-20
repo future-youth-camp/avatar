@@ -1,5 +1,5 @@
 <h1><%= @team.name %> </h1>
 
 <% @team.backpack_contents.each do |bc| %>
-  <%= bc.number %> &#215; <%= bc.item.name %>
+  <%= bc.amount %> &#215; <%= bc.item.name %>
 <% end %>
