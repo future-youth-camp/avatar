@@ -11,4 +11,5 @@
 #
 
 class Item < ActiveRecord::Base
+	has_many :backpack_contents
 end
