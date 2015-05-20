@@ -13,4 +13,5 @@
 class Team < ActiveRecord::Base
 	has_many :backpack_contents
 	has_many :members
+	validates_presence_of :name
 end

@@ -18,4 +18,5 @@
 class Member < ActiveRecord::Base
 	belongs_to :team
 	has_secure_password
+	validates_presence_of :email, :name, :team_id
 end
