@@ -18,5 +18,5 @@
 class BackpackContent < ActiveRecord::Base
   belongs_to :team
   belongs_to :item
-  validates_presence_of :team_id, :item:id
+  validates_presence_of :team_id, :item_id
 end
