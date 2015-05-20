@@ -1,6 +1,6 @@
 
 <ul>
 <% @teams.each do |team| %>
-	<li><%= link_to team.name, teams_show_path(id: team.id) %> </li>
+	<li><%= link_to team.name, team %> </li>
 <% end %>
 </ul>

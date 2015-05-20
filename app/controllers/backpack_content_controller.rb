@@ -1,4 +1,5 @@
 class BackpackContentController < ApplicationController
+
   def index
   end
 
@@ -7,4 +8,5 @@ class BackpackContentController < ApplicationController
 
   def new
   end
+
 end
