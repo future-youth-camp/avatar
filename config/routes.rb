@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   root 'teams#index'
 
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
   resources :teams, only: [:index, :show]
 
 end
