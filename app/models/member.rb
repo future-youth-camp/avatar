@@ -2,13 +2,12 @@
 #
 # Table name: members
 #
-#  id              :integer          not null, primary key
-#  name            :string
-#  email           :string
-#  password_digest :string
-#  team_id         :integer
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id         :integer          not null, primary key
+#  name       :string
+#  email      :string
+#  team_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 # Indexes
 #
@@ -17,6 +16,5 @@
 
 class Member < ActiveRecord::Base
 	belongs_to :team
-	has_secure_password
 	validates_presence_of :email, :name, :team_id
 end
