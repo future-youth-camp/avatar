@@ -15,7 +15,11 @@
 	<!-- -->
 		<div class="container">
 			<header class="header">
-				<h1><a href="/">Logga här</a></h1>
+				<h1>
+					<%= link_to root_path do %>
+						Logga h&auml;r
+					<% end %>
+				</h1>
 			</header>
 			<article class="main">
 				<%= yield %>

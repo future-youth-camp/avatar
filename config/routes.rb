@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
   resources :teams, only: [:index, :show]
 
+  get 'shop/:team_id', to: 'shop#new', as: :shop
+  post 'shop/:team_id', to: 'shop#create', as: :purchase
+
 end

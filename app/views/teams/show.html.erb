@@ -6,14 +6,16 @@
 	  <%= member.name %>
 	<% end %>
 <% else %>
-  Inga medlemmar än
+  Inga medlemmar &auml;n
 <% end %>
 
-<h2>Ryggsäck</h2>
+<h2>Ryggs&auml;ck</h2>
 <% if @team.members.length != 0 %>
 	<% @team.backpack_contents.each do |bc| %>
 	  <%= bc.amount %> &#215; <%= bc.item.name %>
 	<% end %>
 <% else %>
-	Ryggsäcken är tom
+	Ryggs&auml;cken &auml;r tom
 <% end %>
+
+<%= link_to "Handla fler prylar till ryggs&auml;cken", shop_path(team_id: @team.id) %>
