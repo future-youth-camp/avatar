@@ -8,10 +8,9 @@
 	</head>
 	<body>
 	<!-- put these where they belong -->
-	<% flash.each do |name, msg| -%>
+	<% flash.each do |name, msg| %>
 		<%= content_tag :div, msg, class: name %>
-	<% end -%>
-	<%= link_to 'Logga in', login_path %>
+	<% end %>
 	<!-- -->
 		<div class="container">
 			<header class="header">
