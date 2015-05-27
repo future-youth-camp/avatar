@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
 
+  devise_for :members
   ActiveAdmin.routes(self)
 
   root 'teams#index'

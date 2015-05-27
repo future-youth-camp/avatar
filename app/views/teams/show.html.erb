@@ -18,4 +18,6 @@
 	Ryggs&auml;cken &auml;r tom
 <% end %>
 
-<%= link_to "Handla fler prylar till ryggs&auml;cken", shop_path(team_id: @team.id) %>
+<%= link_to  shop_path(team_id: @team.id) do %>
+	Handla fler prylar till ryggs&auml;cken
+<% end %>

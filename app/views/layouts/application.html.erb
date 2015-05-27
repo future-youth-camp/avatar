@@ -8,11 +8,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
 	<body>
-	<!-- put these where they belong -->
-	<% flash.each do |name, msg| %>
-		<%= content_tag :div, msg, class: name %>
-	<% end %>
-	<!-- -->
 		<div class="container">
 			<header class="header">
 				<h1>
@@ -24,6 +19,26 @@
 				</h1>
 				<p class="lead">Future Youth Camp &mdash; Spelet</p>
 			</header>
+			<nav>
+				<% if member_signed_in? %>
+					Logged in as <strong><%= current_member.email %></strong>.
+					<%= link_to 'Edit profile', edit_member_registration_path, :class => 'navbar-link' %> |
+					<%= link_to "Logout", destroy_member_session_path, method: :delete, :class => 'navbar-link'  %>
+				<% else %>
+					<%= link_to "Sign up", new_member_registration_path, :class => 'navbar-link'  %> |
+					<%= link_to "Login", new_member_session_path, :class => 'navbar-link'  %>
+				<% end %>
+			</nav>
+			<% if notice || alert %>
+				<aside class="messages">
+					<% if notice %>
+						<p class="alert alert-success"><%= notice %></p>
+					<% end %>
+					<% if alert %>
+						<p class="alert alert-danger"><%= alert %></p>
+					<% end %>		
+				</aside>
+			<% end %>
 			<article class="main">
 				<%= yield %>
 			</article>

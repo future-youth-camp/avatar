@@ -2,9 +2,9 @@
 #
 # Table name: items
 #
-#  id         :integer          not null, primary key
-#  name       :string
-#  image      :string
+#  id         :INTEGER          not null, primary key
+#  name       :varchar
+#  image      :varchar
 #  cost       :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
