@@ -1,5 +1,5 @@
-$bg-color: #D2DBDD;
-$doc-color: #EFEFEF;
+$bg-color: #201e20;
+$doc-color: rgba(243,243,243,0.7);
 
 
 /* apply a natural box layout model to all elements, but allowing components to change */
@@ -12,17 +12,26 @@ html {
 }
 
 body {
-  background-color: $bg-color;
+  background: $bg-color image-url("back.jpg") no-repeat top center;
+  -webkit-background-size: cover;
+     -moz-background-size: cover;
+       -o-background-size: cover;
+	      background-size: cover;
 }
 
 
 .container {
-  padding: 0.2em 1em;
   max-width: 66em;
   margin: 0 auto;	
 }
 
-.header,
+.logo {
+	max-height: 30vh;
+	max-width: 40vw;
+}
+.header {
+	margin-bottom: 5vh;
+}
 .footer,
 .main {
   background-color: $doc-color;
@@ -33,4 +42,6 @@ body {
 .footer {
   text-align: center;
 }
-
+.main {
+	text-align: center;
+}
