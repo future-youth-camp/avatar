@@ -12,14 +12,13 @@
 			<header class="header">
 				<h1>
 					<%= link_to root_path do %>
-						<img src="<%= asset_path('logo.svg') %>" 
-							 class="logo" 
+						<img src="<%= asset_path('logo.svg') %>"
+							 class="logo"
 							 alt="Future Youth Camp Logotype" />
 					<% end %>
 				</h1>
-				<p class="lead">Future Youth Camp &mdash; Spelet</p>
 			</header>
-			<nav>
+	<!-- 		<nav>
 				<% if member_signed_in? %>
 					Logged in as <strong><%= current_member.email %></strong>.
 					<%= link_to 'Edit profile', edit_member_registration_path, :class => 'navbar-link' %> |
@@ -29,14 +28,14 @@
 					<%= link_to "Login", new_member_session_path, :class => 'navbar-link'  %>
 				<% end %>
 			</nav>
-			<% if notice || alert %>
+	 -->		<% if notice || alert %>
 				<aside class="messages">
 					<% if notice %>
 						<p class="alert alert-success"><%= notice %></p>
 					<% end %>
 					<% if alert %>
 						<p class="alert alert-danger"><%= alert %></p>
-					<% end %>		
+					<% end %>
 				</aside>
 			<% end %>
 			<article class="main">

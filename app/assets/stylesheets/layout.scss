@@ -1,5 +1,5 @@
-$bg-color: #201e20;
-$doc-color: rgba(243,243,243,0.7);
+$bg-color: #030101;
+$doc-color: rgba(243,243,243,0.1);
 
 
 /* apply a natural box layout model to all elements, but allowing components to change */
@@ -12,31 +12,22 @@ html {
 }
 
 body {
-  background: $bg-color image-url("back.jpg") no-repeat top center;
+  background: $bg-color image-url("camp.jpg") no-repeat top center;
   -webkit-background-size: cover;
      -moz-background-size: cover;
        -o-background-size: cover;
-	      background-size: cover;
+	        background-size: cover;
+  color: #2e6a6d;
 }
-
 
 .container {
   max-width: 66em;
-  margin: 0 auto;	
+  margin: 0 auto;
 }
 
 .logo {
-	max-height: 30vh;
+	max-height: 12vh;
 	max-width: 40vw;
-}
-.header {
-	margin-bottom: 5vh;
-}
-.footer,
-.main {
-  background-color: $doc-color;
-  padding: 3em;
-  margin-bottom: 2em;
 }
 .header,
 .footer {
