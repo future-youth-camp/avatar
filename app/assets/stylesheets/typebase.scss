@@ -126,10 +126,14 @@ code {
 a:link,
 a:visited,
 a:active {
-  color: #b0fcb9;
+  color: darken(#00a6de, 15%);
   text-decoration: none;
 }
 a:hover {
-  color: #f15a23;
+  color: lighten(#00a6de, 30%);
+  &.light {
+    color: darken(#00a6de, 30%);
+  }
+
   text-decoration: none;
 }

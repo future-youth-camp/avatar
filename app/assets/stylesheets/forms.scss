@@ -1,20 +1,51 @@
-.field {
-  [type=text],
-  [type=email],
-  [type=password] {
-    -webkit-appearance: none;
-    background-color: transparent;
-    border: transparent;
-    border-bottom: 2px solid #2e6a6d;
-    color: #2e6a6d;
-    height: 2.2em;
-    margin: 1em 0.5em;
+[type=text],
+[type=email],
+[type=password] {
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: transparent;
+  border-bottom: 2px solid #b0fcb9;
+  color: #b0fcb9;
+  height: 2.2em;
+  margin: 1em 0.5em;
+  &:focus {
+    outline: none;
+    border-bottom-color: darken(#faaf3a, 20%);
+    color: darken(#faaf3a, 20%);
   }
-  [type=submit] {
-    -webkit-appearance: none;
-    background-color: #2e6a6d;
-    border: none;
-    color: white;
-    padding: 0.5em 2em;
+  &::-webkit-input-placeholder {
+    color: lighten(#faaf3a, 20%);
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+    color: lighten(#faaf3a, 20%);
+  }
+
+  &::-moz-placeholder {  /* Firefox 19+ */
+    color: lighten(#faaf3a, 20%);
+  }
+
+  &:-ms-input-placeholder {
+    color: lighten(#faaf3a, 20%);
   }
 }
+[type=submit] {
+  -webkit-appearance: none;
+  background-color: #2e6a6d;
+  border: none;
+  color: white;
+  padding: 0.5em 2em;
+  &:hover,
+  &:focus {
+    outline: none;
+    background-color: lighten(#2e6a6d, 10%);
+  }
+  &.warning {
+    background-color: #f15a23;
+    &:hover,
+    &:focus {
+      background-color: darken(#f15a23, 10%);
+    }
+  }
+}
+

@@ -17,12 +17,13 @@ body {
      -moz-background-size: cover;
        -o-background-size: cover;
 	        background-size: cover;
-  color: #2e6a6d;
+  color: #b0fcb9;
 }
 
 .container {
   max-width: 66em;
   margin: 0 auto;
+
 }
 
 .logo {
@@ -35,4 +36,37 @@ body {
 }
 .main {
 	text-align: center;
+  background-color: rgba(100,100,100, 0.45);
+  padding: 1em;
+  margin-top: 1em;
+  border-radius: 7px;
 }
+nav {
+  background-color: hsla(36,95%,80%,0.8);
+  background-color: rgba(100,100,100, 0.45);
+  min-height: 45px;
+  line-height: 45px;
+  color: #2e6a6d;
+  strong {
+    padding: 0 0.5em;
+    margin: 0 0.5em;
+  }
+  .navbar-link {
+    float: right;
+    display: block;
+    margin: 0 0.5em;
+    padding: 0 0.5em;
+    &:hover {
+      background-color: rgba(255,255,255, 0.4);
+    }
+  }
+
+}
+
+.alert {
+  padding: 0.7em;
+  .alert-success {
+    background-color: hsla(127,100%,90%,0.85);
+  }
+}
+

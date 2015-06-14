@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="utf8">
 		<title>Avatar</title>
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -8,27 +9,23 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
 	<body>
+ 		<nav>
+			<div class="container">
+				<% if member_signed_in? %>
+					<strong><%= current_member.email %></strong>
+					<%= link_to "Logga ut", destroy_member_session_path, method: :delete, :class => 'navbar-link light'  %>
+					<%= link_to 'Min Profil', edit_member_registration_path, :class => 'navbar-link light' %>
+				<% else %>
+					<%= link_to "Logga in", new_member_session_path,  :class => 'navbar-link light'  %>
+					<%= link_to "Registrera konto", new_member_registration_path, :class => 'navbar-link light'  %>
+				<% end %>
+			</div>
+		</nav>
+
+
 		<div class="container">
 			<header class="header">
-				<h1>
-					<%= link_to root_path do %>
-						<img src="<%= asset_path('logo.svg') %>"
-							 class="logo"
-							 alt="Future Youth Camp Logotype" />
-					<% end %>
-				</h1>
-			</header>
-	<!-- 		<nav>
-				<% if member_signed_in? %>
-					Logged in as <strong><%= current_member.email %></strong>.
-					<%= link_to 'Edit profile', edit_member_registration_path, :class => 'navbar-link' %> |
-					<%= link_to "Logout", destroy_member_session_path, method: :delete, :class => 'navbar-link'  %>
-				<% else %>
-					<%= link_to "Sign up", new_member_registration_path, :class => 'navbar-link'  %> |
-					<%= link_to "Login", new_member_session_path, :class => 'navbar-link'  %>
-				<% end %>
-			</nav>
-	 -->		<% if notice || alert %>
+			<% if notice || alert %>
 				<aside class="messages">
 					<% if notice %>
 						<p class="alert alert-success"><%= notice %></p>
@@ -38,6 +35,16 @@
 					<% end %>
 				</aside>
 			<% end %>
+
+
+				<h1>
+					<%= link_to root_path do %>
+						<img src="<%= asset_path('logo.svg') %>"
+							 class="logo"
+							 alt="Future Youth Camp Logotype" />
+					<% end %>
+				</h1>
+			</header>
 			<article class="main">
 				<%= yield %>
 			</article>

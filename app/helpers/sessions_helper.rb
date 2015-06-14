@@ -1,7 +1,6 @@
 module SessionsHelper
-
-  def log_in(member)
-    session[:member_id] = member.id
+  def member_id
+    session['warden.user.member.key'][0][0]
   end
 
   def log_out
@@ -10,7 +9,7 @@ module SessionsHelper
   end
 
   def current_member
-    @current_member ||= Member.find_by(id: session[:member_id])
+    @current_member ||= Member.find_by(id: member_id)
   end
 
   def logged_in?

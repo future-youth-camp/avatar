@@ -1,11 +1,14 @@
-<h2>Alla lag</h2>
+<div id="teamroster">
+  <h2 class="hug push">Alla lag</h2>
 
-<% if @teams.length != 0 %>
-	<ul>
-	<% @teams.each do |team| %>
-		<li><%= link_to team.name, team %> </li>
-	<% end %>
-	</ul>
-<% else %>
-	Inga lag &auml;n.
-<% end %>
+  <% if @teams.length != 0 %>
+    <% @teams.each do |team| %>
+      <div class="team-display" style="border-left-color: <%= team.color %>">
+        <h3 class="hug"><%= link_to team.name, team %></h3>
+
+      </div>
+    <% end %>
+  <% else %>
+    Inga lag &auml;n.
+  <% end %>
+</div>
