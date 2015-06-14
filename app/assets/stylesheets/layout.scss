@@ -18,12 +18,12 @@ body {
        -o-background-size: cover;
 	        background-size: cover;
   color: #b0fcb9;
+  padding-bottom: 4em;
 }
 
 .container {
-  max-width: 66em;
+  max-width: 33em;
   margin: 0 auto;
-
 }
 
 .logo {
@@ -38,15 +38,15 @@ body {
 	text-align: center;
   background-color: rgba(100,100,100, 0.45);
   padding: 1em;
-  margin-top: 1em;
-  border-radius: 7px;
+  margin: 1em;
+  border-radius: 10px;
 }
 nav {
   background-color: hsla(36,95%,80%,0.8);
   background-color: rgba(100,100,100, 0.45);
   min-height: 45px;
   line-height: 45px;
-  color: #2e6a6d;
+  border-bottom: 5px solid red;
   strong {
     padding: 0 0.5em;
     margin: 0 0.5em;
@@ -64,9 +64,25 @@ nav {
 }
 
 .alert {
+  width: 100%;
+  display: block;
   padding: 0.7em;
-  .alert-success {
+  &.alert-success {
     background-color: hsla(127,100%,90%,0.85);
+    color: darken(#4f9d4b, 35%);
+  }
+  &.alert-danger {
+    background-color: hsla(36,95%,75%,0.85);
+    color: darken(#c6461f, 15%);
+  }
+  p {
+    padding: 0 1em;
+    text-align: center;
   }
 }
 
+.devise_links a {
+  display: inline-block;
+  margin: 1em 1em;
+  margin-bottom: 0;
+}

@@ -3,9 +3,28 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #teamroster {
+  overflow: hidden;
   .team-display {
     border-left: 4px solid transparent;
-    min-width: 30%;
-    max-width: 100%;
+    margin-bottom: 3em;
+    text-align: left;
+    padding-left: 1em;
+    @media (min-width: 600px) {
+      float: left;
+      overflow: hidden;
+      width: 30.3333333%;
+      margin-right: 1.5%;
+
+      min-width: 30%;
+      max-width: 100%;
+      &:nth-child(3n+3) {
+        margin-right: 0;
+      }
+    }
+
+    ul {
+      margin-left: 10px;
+      -webkit-padding-start: 10px;
+    }
   }
 }

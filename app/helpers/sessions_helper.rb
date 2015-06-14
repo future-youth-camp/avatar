@@ -1,6 +1,6 @@
 module SessionsHelper
   def member_id
-    session['warden.user.member.key'][0][0]
+    session.try(:[],'warden.user.member.key').try(:[],0).try(:[],0)
   end
 
   def log_out

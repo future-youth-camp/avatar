@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf8">
-		<title>Avatar</title>
+		<title>Future Youth Camp</title>
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 		<%= csrf_meta_tags %>
@@ -27,32 +27,40 @@
 		<meta name="theme-color" content="#260c0b">
 	</head>
 	<body>
- 		<nav>
+		<% if member_signed_in? %>
+			<% flash[:alert] = 'Du har inte valt ett lag.' if current_member.try(:team_id).nil? %>
+			<% border_color = "#{current_member.team.color}" %>
+		<% else %>
+			<% border_color = 'transparent' %>
+		<% end %>
+ 		<nav style="border-bottom-color: <%= border_color %>;">
 			<div class="container">
 				<% if member_signed_in? %>
-					<strong><%= current_member.email %></strong>
+					<strong><%= link_to current_member.email, edit_member_registration_path %></strong>
 					<%= link_to "Logga ut", destroy_member_session_path, method: :delete, :class => 'navbar-link light'  %>
-					<%= link_to 'Min Profil', edit_member_registration_path, :class => 'navbar-link light' %>
+
+					<% border_color = "#{current_member.team.color}" %>
 				<% else %>
 					<%= link_to "Logga in", new_member_session_path,  :class => 'navbar-link light'  %>
 					<%= link_to "Registrera konto", new_member_registration_path, :class => 'navbar-link light'  %>
+					<% border_color = 'transparent' %>
 				<% end %>
 			</div>
 		</nav>
-
+		<% if notice || alert %>
+			<aside class="messages">
+				<% if notice %>
+					<div class="hug alert alert-success"><p class="container"><%= notice %></p></div>
+				<% end %>
+				<% if alert %>
+					<div class="hug alert alert-danger"><p class="container"><%= alert %></p></div>
+				<% end %>
+			</aside>
+		<% end %>
 
 		<div class="container">
 			<header class="header">
-			<% if notice || alert %>
-				<aside class="messages">
-					<% if notice %>
-						<p class="alert alert-success"><%= notice %></p>
-					<% end %>
-					<% if alert %>
-						<p class="alert alert-danger"><%= alert %></p>
-					<% end %>
-				</aside>
-			<% end %>
+
 
 
 				<h1>

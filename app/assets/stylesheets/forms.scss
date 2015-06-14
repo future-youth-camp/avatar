@@ -4,29 +4,30 @@
   -webkit-appearance: none;
   background-color: transparent;
   border: transparent;
-  border-bottom: 2px solid #b0fcb9;
+  border-bottom: 2px solid rgba(255,255,255, 0.3);
+  padding-left: 5px;
   color: #b0fcb9;
   height: 2.2em;
   margin: 1em 0.5em;
   &:focus {
     outline: none;
-    border-bottom-color: darken(#faaf3a, 20%);
-    color: darken(#faaf3a, 20%);
+    border-bottom-color: darken(#b0fcb9, 15%);
+    color: darken(#b0fcb9, 15%);
   }
   &::-webkit-input-placeholder {
-    color: lighten(#faaf3a, 20%);
+    color: lighten(#b0fcb9, 15%);
   }
 
   &:-moz-placeholder { /* Firefox 18- */
-    color: lighten(#faaf3a, 20%);
+    color: lighten(#b0fcb9, 15%);
   }
 
   &::-moz-placeholder {  /* Firefox 19+ */
-    color: lighten(#faaf3a, 20%);
+    color: lighten(#b0fcb9, 15%);
   }
 
   &:-ms-input-placeholder {
-    color: lighten(#faaf3a, 20%);
+    color: lighten(#b0fcb9, 15%);
   }
 }
 [type=submit] {
@@ -35,10 +36,20 @@
   border: none;
   color: white;
   padding: 0.5em 2em;
+  border-radius: 2px;
   &:hover,
   &:focus {
     outline: none;
     background-color: lighten(#2e6a6d, 10%);
+  }
+  &.primary {
+    background-color: #6bce21 ;
+    &:hover,
+    &:focus {
+      background-color: darken(#6bce21, 5%);
+    }
+    min-width: 75%;
+    font-weight: bold;
   }
   &.warning {
     background-color: #f15a23;

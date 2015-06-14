@@ -28,9 +28,14 @@
 class Member < ActiveRecord::Base
   belongs_to :team
 #  validates_presence_of :email, :name, :team_id
-  
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  def team
+    t = Team.find_by(id: team_id)
+    t = Team.new(name: 'Inget', color: 'red') if t.nil?
+    t
+  end
 end

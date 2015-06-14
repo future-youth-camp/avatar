@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     unlock: 'unblock',
     registration: 'register',
     sign_up: 'cmon_let_me_in'
-  }
+  }, controllers: { :registrations => "registrations" }
   ActiveAdmin.routes(self)
 
   root 'teams#index'
