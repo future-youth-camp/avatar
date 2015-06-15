@@ -35,7 +35,12 @@ class Member < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   def team
     t = Team.find_by(id: team_id)
-    t = Team.new(name: 'Inget', color: 'red') if t.nil?
+    t = Team.new(name: 'Inget', color: 'red', admin: false) if t.nil?
     t
   end
+
+  def admin
+    team.admin
+  end
+
 end

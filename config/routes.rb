@@ -11,12 +11,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   root 'teams#index'
-
-  # get 'login', to: 'sessions#new', as: :new_login
-  # post 'login', to: 'sessions#create', as: :create_login
-  # delete 'logout', to: 'sessions#destroy', as: :logout
   resources :teams, only: [:index, :show]
-
   get 'shop/:team_id', to: 'shop#new', as: :shop
   post 'shop/:team_id', to: 'shop#create', as: :purchase
 end

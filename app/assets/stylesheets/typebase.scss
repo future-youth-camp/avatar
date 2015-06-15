@@ -76,19 +76,19 @@ h2 {
 }
 
 h3 {
-  font-size: 1 * $scale * 1rem;
+  font-size: 1.5 * $scale * 1rem;
 }
 
 h4 {
-  font-size: $scale / 2 * 1rem;
+  font-size: 1 $scale * 1rem;
 }
 
 h5 {
-  font-size: $scale / 3 * 1rem;
+  font-size: ($scale / 5) * 4 * 1rem;
 }
 
 h6 {
-  font-size: $scale / 4 * 1rem;
+  font-size: ($scale / 7) * 5 * 1rem;
 }
 
 /* Tables */

@@ -3,17 +3,19 @@
 
   <% if @teams.length != 0 %>
     <% @teams.each do |team| %>
-      <div class="team-display" style="border-left-color: <%= team.color %>">
-        <h3 class="hug"><%= link_to team.name, team %></h3>
-        <ul>
-        <% team.members.map do |member| %>
-          <li>
-            <%= "#{member.name}" if !member.name.nil? %>
-            <%= 'Okänd' if member.name.nil? %>
-          </li>
-        <% end %>
-        </ul>
-      </div>
+      <% unless team.admin %>
+        <div class="team-display" style="border-left-color: <%= team.color %>">
+          <h5 class="hug"><%= link_to team.name, team %></h5>
+          <ul>
+          <% team.members.map do |member| %>
+            <li>
+              <%= "#{member.name}" unless member.name.nil? %>
+              <%= 'Okänd' if member.name.nil? %>
+            </li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
     <% end %>
   <% else %>
     Inga lag &auml;n.
