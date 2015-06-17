@@ -1,23 +1,41 @@
-<h1><%= @team.name %></h1>
+<div class="team_icon" style="background-color: <%= @team.color %>; "></div>
 
-<h2>Medlemmar</h2>
+<h2 class="push hug"><%= @team.name %></h2>
+
+
+
+<h3>Medlemmar</h3>
 <% if @team.members.length != 0 %>
-	<% @team.members.each do |member| %>
-	  <%= member.name %>
-	<% end %>
+  <ul class="hug push member_list">
+  <% @team.members.each do |member| %>
+    <li><%= member.name %></li>
+  <% end %>
+  </ul>
 <% else %>
   Inga medlemmar &auml;n
 <% end %>
 
-<h2>Ryggs&auml;ck</h2>
-<% if @team.members.length != 0 %>
-	<% @team.backpack_contents.each do |bc| %>
-	  <%= bc.amount %> &#215; <%= bc.item.name %>
-	<% end %>
+<h3>Poäng</h3>
+<h4 class="hug">Just nu, <%= @team.points %>poäng.</h4>
+<% if @team.points_log.count == 0 %>
+  Inga poäng intjänade eller spenderade
 <% else %>
-	Ryggs&auml;cken &auml;r tom
+  <ul class="log_list">
+  <% @team.points_log.each do |entry| %>
+    <li><%= entry %></li>
+  <% end %>
+  </ul>
 <% end %>
 
-<%= link_to  shop_path(team_id: @team.id) do %>
+<h3>Ryggs&auml;ck</h3>
+<% if @team.backpack_contents.count == 0 %>
+	Ryggs&auml;cken &auml;r tom
+<% else %>
+  <% @team.backpack_contents.each do |bc| %>
+    <%= bc.amount %> &#215; <%= bc.item.name %>
+  <% end %>
+<% end %>
+<br><br>
+<%= button_to shop_path(team_id: @team.id), method: :get, class: :primary do %>
 	Handla fler prylar till ryggs&auml;cken
 <% end %>

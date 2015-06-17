@@ -17,6 +17,8 @@
 #  updated_at             :datetime
 #  name                   :varchar
 #  team_id                :integer
+#  provider               :varchar
+#  uid                    :varchar
 #
 # Indexes
 #
@@ -32,7 +34,20 @@ class Member < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, :omniauth_providers => [:slack]
+
+  def self.from_omniauth(auth)
+      where(provider: auth.provider, uid: auth.uid).first_or_create do |member|
+        member.provider = auth.provider
+        member.uid = auth.uid
+        member.email = auth.info.email
+        member.password = Devise.friendly_token[0,20]
+      end
+      puts "-SUCCESS-SUCCESS-SUCCESS-SUCCESS-SUCCESS-SUCCESS-"
+      puts member
+  end
+
   def team
     t = Team.find_by(id: team_id)
     t = Team.new(name: 'Inget', color: 'red', admin: false) if t.nil?

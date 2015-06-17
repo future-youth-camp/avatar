@@ -36,7 +36,7 @@
  		<nav style="border-bottom-color: <%= border_color %>;">
 			<div class="container">
 				<% if member_signed_in? %>
-					<strong><%= link_to current_member.email, edit_member_registration_path %></strong>
+					<strong><%= link_to current_member.name, edit_member_registration_path %></strong>
 					<%= link_to "Logga ut", destroy_member_session_path, method: :delete, :class => 'navbar-link light'  %>
 					<% if current_member.admin %>
 						<%= link_to "Admin", admin_dashboard_path, method: :get, :class => 'navbar-link light'  %>
@@ -62,9 +62,6 @@
 
 		<div class="container">
 			<header class="header">
-
-
-
 				<h1>
 					<%= link_to root_path do %>
 						<img src="<%= asset_path('logo.svg') %>"

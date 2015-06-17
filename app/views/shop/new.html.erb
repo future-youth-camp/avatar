@@ -1,19 +1,13 @@
-<h1>Handla resurser</h1>
+<h3 class="hug push">Handla resurser</h3>
+<p>Po&auml;ng: <%= @team.points %></p>
 
-<dl>
-	<dt>Lag:</dt>
-	<dd><%= @team.name %></dd>
-	<dt>Po&auml;ng:</dt>
-	<dd><%= @team.points %></dd>
-</dl>
-
-<ul>
+<ul class="shop_items">
 <% @items.each do |item| %>
 	<li>
-		<h3><%=item.name%></h3>
-		<img src="<%=item.image%>"/>
+		<h6 class="thin"><%=item.name%></h6>
+		<figure><img src="<%= asset_path("items/#{item.image}.svg") %>"/></figure>
 		<%= button_to purchase_path(team_id: @team.id, item_id: item.id), disabled: (item.cost > @team.points) do %>
-			K&ouml;p f&ouml;r <%= item.cost %>p
+			-<%= item.cost %>p
 		<% end %>
 	</li>
 <% end %>

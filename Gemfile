@@ -33,9 +33,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'activeadmin', github: 'activeadmin'
-gem 'dotenv'
+gem 'dotenv-rails', :require => 'dotenv/rails-now'
 gem 'annotate'
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-slack'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

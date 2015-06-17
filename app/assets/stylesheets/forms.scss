@@ -37,6 +37,9 @@
   color: white;
   padding: 0.5em 2em;
   border-radius: 2px;
+  &[disabled] {
+    background-color: grey;
+  }
   &:hover,
   &:focus {
     outline: none;

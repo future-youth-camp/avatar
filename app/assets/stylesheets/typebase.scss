@@ -57,26 +57,27 @@ h1, h2, h3, h4, h5, h6 {
   /* Change heading typefaces here */
   font-family: 'Open Sans', Calibri, Arial, Helvetica, sans-serif;
   margin-top: $leading;
-  margin-bottom: 0;
+  margin-bottom: 0.2 * 1em;
   line-height: $leading;
 }
 
 h1 {
-  font-size: 3 * $scale * 1rem;
+  font-size: 2 * $scale * 1rem;
   line-height: 3 * $leading;
   margin-top: 2 * $leading;
   font-weight: 100;
 }
 
 h2 {
-  font-size: 2 * $scale * 1rem;
+  font-size: 1.5 * $scale * 1rem;
   line-height: 2 * $leading;
   margin-top: 2 * $leading;
   font-weight: 100;
 }
 
 h3 {
-  font-size: 1.5 * $scale * 1rem;
+  font-size: 1.1 * $scale * 1rem;
+  font-weight: 200;
 }
 
 h4 {
@@ -89,6 +90,7 @@ h5 {
 
 h6 {
   font-size: ($scale / 7) * 5 * 1rem;
+  font-weight: 100;
 }
 
 /* Tables */

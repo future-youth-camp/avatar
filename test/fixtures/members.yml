@@ -17,6 +17,8 @@
 #  updated_at             :datetime
 #  name                   :varchar
 #  team_id                :integer
+#  provider               :varchar
+#  uid                    :varchar
 #
 # Indexes
 #
