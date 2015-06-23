@@ -260,7 +260,7 @@ Devise.setup do |config|
     :slack,
     ENV['SLACK_APP_ID'],
     ENV['SLACK_APP_SECRET'],
-    scope: 'client'
-    , team: 'fyc2015'
+    scope: 'client',
+    team: 'fyc2015'
   )
 end
