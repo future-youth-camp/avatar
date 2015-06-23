@@ -2,7 +2,7 @@
 #
 # Table name: backpack_contents
 #
-#  id         :INTEGER          not null, primary key
+#  id         :integer          not null, primary key
 #  amount     :integer
 #  team_id    :integer
 #  item_id    :integer

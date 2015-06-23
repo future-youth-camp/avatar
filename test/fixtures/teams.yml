@@ -2,10 +2,10 @@
 #
 # Table name: teams
 #
-#  id         :INTEGER          not null, primary key
-#  name       :varchar
+#  id         :integer          not null, primary key
+#  name       :string
 #  points     :integer
-#  color      :varchar
+#  color      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  admin      :boolean          default(FALSE)

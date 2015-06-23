@@ -2,8 +2,8 @@
 #
 # Table name: points_logs
 #
-#  id         :INTEGER          not null, primary key
-#  reason     :varchar
+#  id         :integer          not null, primary key
+#  reason     :string
 #  change     :integer
 #  team_id    :integer
 #  member_id  :integer

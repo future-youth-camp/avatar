@@ -2,8 +2,8 @@
 #
 # Table name: points_logs
 #
-#  id         :INTEGER          not null, primary key
-#  reason     :varchar
+#  id         :integer          not null, primary key
+#  reason     :string
 #  change     :integer
 #  team_id    :integer
 #  member_id  :integer
@@ -15,6 +15,7 @@
 #  index_points_logs_on_member_id  (member_id)
 #  index_points_logs_on_team_id    (team_id)
 #
+
 class PointsLog < ActiveRecord::Base
   belongs_to :team
   belongs_to :member
