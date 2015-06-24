@@ -10,7 +10,7 @@ class ShopController < ApplicationController
     @team = team
     @item = Item.find_by(id: params[:item_id])
     @success = false
-    if @item.cost < @team.points
+    if @item.cost <= @team.points
       bc = BackpackContent.find_or_create_by(
         team_id: @team.id,
         item_id: @item.id
@@ -26,6 +26,7 @@ class ShopController < ApplicationController
       @team.save!
       bc.save!
       @success = true
+      redirect_to team_path(@team)
     end
   end
 

@@ -14,27 +14,41 @@
 <% else %>
   Inga medlemmar &auml;n
 <% end %>
-
+<br>
 <h3>Poäng</h3>
 <h4 class="hug">Just nu, <%= @team.points %>poäng.</h4>
-<% if @team.points_log.count == 0 %>
-  Inga poäng intjänade eller spenderade
+<br>
+<h3>Ryggs&auml;ck</h3>
+<% if @team.backpack_contents.count == 0 %>
+  Ryggs&auml;cken &auml;r tom
 <% else %>
-  <ul class="log_list">
-  <% @team.points_log.each do |entry| %>
-    <li><%= entry %></li>
+  <ul class="backpack">
+  <% @team.backpack_contents.each do |bc| %>
+    <li>
+      <span><%= bc.amount %></span>
+      <span>&#215; </span>
+      <span><%= bc.item.name %></span>
+    </li>
   <% end %>
   </ul>
 <% end %>
-
-<h3>Ryggs&auml;ck</h3>
-<% if @team.backpack_contents.count == 0 %>
-	Ryggs&auml;cken &auml;r tom
+<br>
+<h3>Poänglogg</h3>
+<% if @team.points_log.count == 0 %>
+  Inga poäng intjänade eller spenderade
 <% else %>
-  <% @team.backpack_contents.each do |bc| %>
-    <%= bc.amount %> &#215; <%= bc.item.name %>
+  <table class="log">
+  <% @team.points_log.each do |entry| %>
+    <tr>
+      <td><%= entry.created_at.strftime("%F %T") %></td>
+      <td><%= entry.reason %></td>
+      <td><%= entry.change %></td>
+    </tr>
   <% end %>
+  </table>
 <% end %>
+
+
 <br><br>
 <%= button_to shop_path(team_id: @team.id), method: :get, class: :primary do %>
 	Handla fler prylar till ryggs&auml;cken

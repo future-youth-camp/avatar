@@ -26,7 +26,7 @@ class Team < ActiveRecord::Base
   end
 
   def points_log
-    result = PointsLog.where(team_id: id).limit(5)
+    result = PointsLog.where(team_id: id).order(created_at: :desc).limit(15)
     return [result] if result.instance_of? PointsLog
     return [] if result.nil?
     result
