@@ -36,15 +36,12 @@
  		<nav style="border-bottom-color: <%= border_color %>;">
 			<div class="container">
 				<% if member_signed_in? %>
-					<strong><%= link_to current_member.name, edit_member_registration_path %></strong>
-					<%= link_to "Logga ut", destroy_member_session_path, method: :delete, :class => 'navbar-link light'  %>
+					<%= link_to "Logga ut #{current_member.name}", signout_path, method: :delete, :class => 'navbar-link light'  %>
 					<% if current_member.admin %>
 						<%= link_to "Admin", admin_dashboard_path, method: :get, :class => 'navbar-link light'  %>
 					<% end %>
 					<% border_color = "#{current_member.team.color}" %>
 				<% else %>
-					<%= link_to "Logga in", new_member_session_path,  :class => 'navbar-link light'  %>
-					<%= link_to "Registrera konto", new_member_registration_path, :class => 'navbar-link light'  %>
 					<% border_color = 'transparent' %>
 				<% end %>
 			</div>

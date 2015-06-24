@@ -40,4 +40,10 @@ class Team < ActiveRecord::Base
       change: DEFAULT_POINTS
     )
   end
+
+  def self.admin_team_id
+    t = Team.find_by(admin: true)
+    return nil if t.nil?
+    t.id
+  end
 end

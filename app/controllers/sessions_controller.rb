@@ -1,22 +1,34 @@
 class SessionsController < ApplicationController
-  helper :sessions
-  def new
+  skip_before_action :authenticate_member!, :only => [:login, :create, :destroy]
+
+  def login
+
   end
 
   def create
-    member = Member.find_by(email: params[:session][:email].downcase)
-    if member && member.authenticate(params[:session][:password])
-      log_in member
-      redirect_to root_path
+    puts "entered sessions create"
+    auth = request.env["omniauth.auth"]
+    member = Member.find_by_provider_and_uid(auth["provider"], auth["uid"])
+
+    if member
+      puts "trying to update name"
+      puts auth["name"]
+      Member.update_with_omniauth(member, auth)
+      member = Member.find_by_provider_and_uid(auth["provider"], auth["uid"])
     else
-      flash[:error] =  "Felaktigt lösenord eller epostadress"
-      render 'new'
+      puts "create new member"
+      member = Member.create_with_omniauth(auth)
     end
+    # require 'pry'
+    # binding.pry
+
+    session[:member_id] = member.id
+    redirect_to root_url, :notice => "Signed in!"
   end
 
   def destroy
-    SessionsHelper::log_out
-    redirect_to root_path
+    puts "killing session"
+    reset_session
+    redirect_to root_url, :notice => "Signed out!"
   end
-
 end

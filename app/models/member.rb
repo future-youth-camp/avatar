@@ -1,3 +1,4 @@
+require "cgi"
 # == Schema Information
 #
 # Table name: members
@@ -26,26 +27,23 @@
 #  index_members_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_members_on_team_id               (team_id)
 #
-
 class Member < ActiveRecord::Base
   belongs_to :team
-#  validates_presence_of :email, :name, :team_id
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:slack]
+  def self.create_with_omniauth(auth)
+    create! do |member|
+      puts "creating new member"
+      member.provider = CGI::escapeHTML(auth["provider"].force_encoding(Encoding::UTF_8))
+      member.uid = auth["uid"]
+      member.name = CGI::escapeHTML(auth["info"]["name"].force_encoding(Encoding::UTF_8))
+      member.email = CGI::escapeHTML(auth["info"]["email"].force_encoding(Encoding::UTF_8))
+      member.team_id = Team.admin_team_id if auth["extra"]["user_info"]["user"]["is_admin"]
+    end
+  end
 
-  def self.from_omniauth(auth)
-      where(provider: auth.provider, uid: auth.uid).first_or_create do |member|
-        member.provider = auth.provider
-        member.uid = auth.uid
-        member.email = auth.info.email
-        member.password = Devise.friendly_token[0,20]
-      end
-      puts "-SUCCESS-SUCCESS-SUCCESS-SUCCESS-SUCCESS-SUCCESS-"
-      puts member
+  def self.update_with_omniauth(member, auth)
+    name = CGI::escapeHTML(auth["info"]["name"].force_encoding(Encoding::UTF_8))
+    member.update(name: name)
   end
 
   def team
@@ -57,5 +55,4 @@ class Member < ActiveRecord::Base
   def admin
     team.admin
   end
-
 end
