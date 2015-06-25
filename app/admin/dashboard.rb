@@ -10,21 +10,7 @@ ActiveAdmin.register_page "Dashboard" do
     end
 
 #    Here is an example of a simple dashboard with columns and panels.
-
     columns do
-      column do
-        panel "Alla lag" do
-          ul do
-            Team.all.map do |team|
-              li link_to(team.name, edit_admin_team_path(team))
-            end
-          end
-          div do
-            button_to("Skapa lag", new_admin_team_path, method: :get)
-          end
-        end
-      end
-
       column do
         panel "Senaste användarna" do
           ul do
@@ -37,6 +23,25 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
       end
+
+
+      column do
+        panel "Alla lag" do
+          Team.all.map do |team|
+            columns do
+              column do
+                link_to(team.name, edit_admin_team_path(team))
+              end
+              column do
+                link_to("Ändra poäng", new_admin_points_log_path(team_id:team.id))
+              end
+            end
+          end
+          div do
+            button_to("Skapa lag", new_admin_team_path, method: :get)
+          end
+        end # panel
+      end # column
     end
   end # content
 end

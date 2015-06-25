@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   root 'teams#index'
-  resources :teams, only: [:index, :show]
+  resources :teams, only: [:index, :show, :change_points]
   get 'shop/:team_id', to: 'shop#new', as: :shop
   post 'shop/:team_id', to: 'shop#create', as: :purchase
 

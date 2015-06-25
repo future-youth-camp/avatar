@@ -19,4 +19,11 @@
 class PointsLog < ActiveRecord::Base
   belongs_to :team
   belongs_to :member
+  after_create :update_team_points
+
+  def update_team_points
+    t = Team.find_by(id: self.team_id)
+    t.points = t.points + self.change
+    t.save
+  end
 end
