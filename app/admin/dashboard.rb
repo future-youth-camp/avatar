@@ -12,12 +12,14 @@ ActiveAdmin.register_page "Dashboard" do
 #    Here is an example of a simple dashboard with columns and panels.
     columns do
       column do
-        panel "Senaste användarna" do
-          ul do
-            Member.all.map do |member|
-              li do
-                link_to("#{member.name} - #{member.team.name}", edit_admin_member_path(member))
-
+        panel "Alla användare" do
+          Member.all.map do |member|
+            columns do
+              column do
+                link_to(member.name, edit_admin_member_path(member))
+              end
+              column do
+                para member.team.name
               end
             end
           end

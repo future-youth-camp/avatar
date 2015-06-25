@@ -37,7 +37,7 @@ class ShopController < ApplicationController
   end
 
   def disallowed
-    unless current_member.admin || current_member.team_id == params[:team_id]
+    unless current_member.admin || current_member.team_id == params[:team_id].to_i
       redirect_to teams_path
     end
   end
