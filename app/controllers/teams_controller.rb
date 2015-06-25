@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
   end
 
   def show
-    if current_member.admin || current_member.team_id == params[:id]
+    if current_member.admin || current_member.team_id == params[:id].to_i
       @team = Team.find(params[:id])
       render
     else
