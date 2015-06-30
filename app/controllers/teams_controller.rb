@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-
+  skip_before_action :authenticate_member!, :only => [:index]
   def index
     @teams = Team.all
   end

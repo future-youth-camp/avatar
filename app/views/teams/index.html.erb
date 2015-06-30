@@ -1,23 +1,41 @@
-<div id="teamroster">
-  <h2 class="hug push">Alla lag</h2>
+<% if member_signed_in? %>
+  <div id="teamroster">
+    <h2 class="hug push">Alla lag</h2>
 
-  <% if @teams.length != 0 %>
-    <% @teams.each do |team| %>
-      <% unless team.admin %>
-        <div class="team-display" style="border-left-color: <%= team.color %>">
-          <h5 class="hug"><%= link_to team.name, team %></h5>
-          <ul>
-          <% team.members.map do |member| %>
-            <li>
-              <%= "#{member.name}" unless member.name.nil? %>
-              <%= 'Okänd' if member.name.nil? %>
-            </li>
-          <% end %>
-          </ul>
-        </div>
+    <% if @teams.length != 0 %>
+      <% @teams.each do |team| %>
+        <% unless team.admin %>
+          <div class="team-display" style="border-left-color: <%= team.color %>">
+            <h5 class="hug"><%= link_to team.name, team %></h5>
+            <ul>
+            <% team.members.map do |member| %>
+              <li>
+                <%= "#{member.name}" unless member.name.nil? %>
+                <%= 'Okänd' if member.name.nil? %>
+              </li>
+            <% end %>
+            </ul>
+            <br>
+            <h6><%= link_to 'webbplats', team.website if team.website %></h6>
+          </div>
+        <% end %>
       <% end %>
+    <% else %>
+      Inga lag &auml;n.
     <% end %>
-  <% else %>
-    Inga lag &auml;n.
-  <% end %>
-</div>
+  </div>
+<% else %>
+  <% if @teams.length != 0 %>
+      <h4>Årets lag</h4>
+      <% @teams.each do |team| %>
+        <% unless team.admin %>
+          <h6><%= link_to "#{team.name}", team.website if team.website %></h6>
+        <% end %>
+      <% end %>
+      <br>
+      <br>
+      <a href="auth/slack" class="btn primary">Logga in med Slack</a>
+      <br>
+      <br>
+    <% end %>
+<% end %>
