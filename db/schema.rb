@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150630192148) do
+ActiveRecord::Schema.define(version: 20150703205304) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 20150630192148) do
   add_index "backpack_contents", ["item_id"], name: "index_backpack_contents_on_item_id"
   add_index "backpack_contents", ["team_id"], name: "index_backpack_contents_on_team_id"
 
+  create_table "copycat_translations", force: :cascade do |t|
+    t.string   "locale"
+    t.string   "key"
+    t.text     "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "copycat_translations", ["locale", "key"], name: "index_copycat_translations_on_locale_and_key", unique: true
+
   create_table "items", force: :cascade do |t|
     t.string   "name"
     t.string   "image"
@@ -59,6 +69,23 @@ ActiveRecord::Schema.define(version: 20150630192148) do
 
   add_index "members", ["email"], name: "index_members_on_email", unique: true
   add_index "members", ["team_id"], name: "index_members_on_team_id"
+
+  create_table "phrasing_phrase_versions", force: :cascade do |t|
+    t.integer  "phrasing_phrase_id"
+    t.text     "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "phrasing_phrase_versions", ["phrasing_phrase_id"], name: "index_phrasing_phrase_versions_on_phrasing_phrase_id"
+
+  create_table "phrasing_phrases", force: :cascade do |t|
+    t.string   "locale"
+    t.string   "key"
+    t.text     "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "points_logs", force: :cascade do |t|
     t.string   "reason"

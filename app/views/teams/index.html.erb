@@ -25,6 +25,7 @@
   </div>
 <% else %>
   <% if @teams.length != 0 %>
+      <h1><%= phrase('site.index.heading') %></h1>
       <h4>Årets lag</h4>
       <% @teams.each do |team| %>
         <% unless team.admin %>
